@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   The White Cube — global base
+   Pure black on white. Tabular + lining figures everywhere.
+   ============================================================ */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Always lining + tabular figures — numerals line up like a catalogue. */
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  /* No rubber-band scroll glow / horizontal drift on the gallery column. */
+  overscroll-behavior: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Remove tap highlight; the design supplies its own crisp feedback. */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer utilities {
+  /* The ONE permitted shadow family: a soft drop shadow beneath a box photo,
+     as if the object is mounted slightly off the white wall. Applied as a
+     CSS filter so the shadow hugs the photo's rectangle, not a bounding box. */
+  .shadow-photo-stage {
+    filter: drop-shadow(0 26px 30px rgba(0, 0, 0, 0.26));
+  }
+  .shadow-photo-stage-b {
+    filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.24));
+  }
+  .shadow-photo-gallery {
+    filter: drop-shadow(0 16px 20px rgba(0, 0, 0, 0.18));
+  }
+  .shadow-photo-card {
+    filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.22));
+  }
+  .shadow-photo-review {
+    filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.2));
+  }
+
+  /* Hide scrollbars on horizontal museum rows (region filter, etc.) */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
